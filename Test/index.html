@@ -132,6 +132,11 @@ p { color: var(--ink2); line-height: 1.75; }
 .video-wrap iframe, .video-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 .video-caption { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 8px; font-weight: 600; }
 
+/* REDUZIR CONTROLES DE VÍDEO NO MOBILE */
+@media(max-width: 480px) {
+  .video-wrap { padding-bottom: 100%; max-width: 280px; margin: 24px auto; }
+}
+
 /* ─── STRIP DE PROVA SOCIAL ─── */
 .proof-strip { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .proof-strip-inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 0; text-align: center; padding: 24px 10px; }
@@ -298,10 +303,14 @@ footer { background: #111; padding: 40px 20px; text-align: center; color: rgba(2
 <!-- SVG Defs para Gradiente das Estrelas de Avaliação -->
 <svg style="display:none;">
   <defs>
-    <linearGradient id="half-star-grad">
-      <stop offset="50%" stop-color="#D4920A"/>
-      <stop offset="50%" stop-color="#E4E2DC" stop-opacity="1"/>
+    <linearGradient id="half-star-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="49%" stop-color="#D4920A"/>
+      <stop offset="51%" stop-color="#E4E2DC"/>
     </linearGradient>
+    <mask id="half-star-mask">
+      <rect width="24" height="24" fill="white"/>
+      <rect width="12" height="24" fill="black"/>
+    </mask>
   </defs>
 </svg>
 
@@ -601,7 +610,7 @@ footer { background: #111; padding: 40px 20px; text-align: center; color: rgba(2
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg class="star-svg" viewBox="0 0 24 24"><path fill="url(#half-star-grad)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
         <div class="review-badge">sofria com isso toda semana 😩</div>
         <p class="review-text">
@@ -649,11 +658,11 @@ footer { background: #111; padding: 40px 20px; text-align: center; color: rgba(2
           </div>
         </div>
         <div class="review-stars">
-          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.46 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg class="star-svg" viewBox="0 0 24 24"><path fill="url(#half-star-grad)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="none" stroke="var(--amber)" stroke-width="0.5"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="var(--amber)" clip-path="polygon(0 0, 50% 0, 50% 100%, 0 100%)"/></svg>
         </div>
         <div class="review-badge">churrasqueira nova em folha 🍖</div>
         <p class="review-text">
@@ -711,7 +720,7 @@ footer { background: #111; padding: 40px 20px; text-align: center; color: rgba(2
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="none" stroke="var(--amber)" stroke-width="0.5"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="var(--amber)" clip-path="polygon(0 0, 50% 0, 50% 100%, 0 100%)"/></svg>
         </div>
         <div class="review-badge">surpresa com a facilidade 🔋</div>
         <p class="review-text">
@@ -737,7 +746,7 @@ footer { background: #111; padding: 40px 20px; text-align: center; color: rgba(2
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg class="star-svg" viewBox="0 0 24 24"><path fill="url(#half-star-grad)" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
         <div class="review-badge">presente perfeito pra mae ❤️</div>
         <p class="review-text">
@@ -1086,15 +1095,32 @@ document.querySelectorAll('.reveal').forEach(function(el){
 
 var sticky = document.getElementById('stickyBar');
 var oferta = document.getElementById('oferta');
+var stickyActivated = false;
 if(sticky && oferta){
+  // Mostrar sticky bar apenas quando rolar para perto da seção de oferta
   var stickyObs = new IntersectionObserver(function(entries){
+    // Se oferta está visível, esconder a barra
     if(entries[0].isIntersecting){
       sticky.classList.remove('in');
-    } else {
-      sticky.classList.add('in');
+      stickyActivated = false;
     }
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
   stickyObs.observe(oferta);
+  
+  // Mostrar barra quando usuário rolar abaixo de 80% da página
+  window.addEventListener('scroll', function(){
+    var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var scrolled = window.scrollY;
+    var scrollPercent = (scrolled / scrollHeight) * 100;
+    
+    // Mostrar quando rolar mais de 80% - uma vez ativado, permanece visível
+    if(scrollPercent > 80){
+      sticky.classList.add('in');
+      stickyActivated = true;
+    } else if(!stickyActivated) {
+      sticky.classList.remove('in');
+    }
+  });
 }
 </script>
 </body>
